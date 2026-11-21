@@ -3,25 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hrim Games — Studio de jeu vidéo indépendant français</title>
-  <meta name="description" content="Hrim Games est un studio indépendant français créant des jeux vidéo systémiques entre science-fiction et dark fantasy. Découvrez Critical Torus.">
+  <title>Hrim Games — Développeur de jeux vidéo indépendant (PC / Steam)</title>
+  <meta name="description" content="Hrim Games est un studio de jeu vidéo indépendant français sur PC (Steam). Découvrez Critical Torus, démo bientôt disponible.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-base: #111215;
-      --bg-surface: #16181d;
-      --bg-elevated: #1c1f26;
-      --text-primary: #e5e2dc;
-      --text-secondary: #9c9a92;
-      --text-muted: #6e6c66;
-      --accent-brass: #c4a46c;
-      --accent-frost: #7fa1b5;
-      --border-subtle: rgba(229, 226, 220, 0.09);
-      --border-hover: rgba(229, 226, 220, 0.2);
-      --font-serif: 'Newsreader', Georgia, serif;
-      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --bg-base: #0a080c;
+      --bg-surface: #130f18;
+      --bg-elevated: #1b1523;
+      --bg-card-top: #171120;
+      --text-primary: #f4f0f7;
+      --text-secondary: #b4abbe;
+      --text-muted: #7c7288;
+      --burgundy: #8f1d3d;
+      --burgundy-hover: #a82348;
+      --burgundy-bright: #e05278;
+      --burgundy-soft: rgba(143, 29, 61, 0.2);
+      --violet: #6d3cc4;
+      --violet-bright: #a47dff;
+      --violet-soft: rgba(109, 60, 196, 0.18);
+      --border-subtle: rgba(244, 240, 247, 0.09);
+      --border-strong: rgba(244, 240, 247, 0.18);
+      --border-accent: rgba(196, 59, 98, 0.42);
+      --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
     }
 
@@ -44,8 +51,9 @@
       min-height: 100vh;
       line-height: 1.65;
       background:
-        radial-gradient(circle at 82% 14%, rgba(127, 161, 181, 0.055), transparent 42%),
-        radial-gradient(circle at 14% 72%, rgba(196, 164, 108, 0.04), transparent 48%),
+        radial-gradient(ellipse 60% 45% at 15% 0%, rgba(143, 29, 61, 0.22), transparent 65%),
+        radial-gradient(ellipse 55% 40% at 88% 12%, rgba(109, 60, 196, 0.18), transparent 65%),
+        radial-gradient(ellipse 50% 45% at 50% 100%, rgba(143, 29, 61, 0.12), transparent 70%),
         var(--bg-base);
     }
 
@@ -54,9 +62,13 @@
       text-decoration: none;
     }
 
+    button {
+      font-family: inherit;
+    }
+
     .container {
       width: 100%;
-      max-width: 1040px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 0 1.75rem;
     }
@@ -64,10 +76,10 @@
     header {
       position: sticky;
       top: 0;
-      z-index: 20;
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      background-color: rgba(17, 18, 21, 0.82);
+      z-index: 30;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background-color: rgba(10, 8, 12, 0.82);
       border-bottom: 1px solid var(--border-subtle);
     }
 
@@ -76,32 +88,51 @@
       align-items: center;
       justify-content: space-between;
       height: 4.5rem;
-      gap: 1rem;
+      gap: 1.25rem;
     }
 
     .brand {
-      display: flex;
-      align-items: baseline;
+      display: inline-flex;
+      align-items: center;
       gap: 0.75rem;
     }
 
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 7px;
+      background: linear-gradient(135deg, var(--burgundy), var(--violet));
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: 0 4px 16px rgba(143, 29, 61, 0.35);
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
     .brand-name {
-      font-family: var(--font-serif);
-      font-size: 1.35rem;
-      font-weight: 400;
-      letter-spacing: 0.04em;
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
       color: var(--text-primary);
     }
 
-    .brand-origin {
+    .brand-sub {
       font-family: var(--font-mono);
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--text-muted);
+      margin-top: 0.15rem;
     }
 
-    .nav-actions {
+    .nav-right {
       display: flex;
       align-items: center;
       gap: 1.75rem;
@@ -110,13 +141,15 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 1.5rem;
-      font-size: 0.875rem;
+      gap: 1.6rem;
+      font-size: 0.9rem;
+      font-weight: 500;
       color: var(--text-secondary);
     }
 
     .nav-links a {
-      transition: color 0.25s ease;
+      position: relative;
+      transition: color 0.2s ease;
     }
 
     .nav-links a:hover {
@@ -128,7 +161,7 @@
       align-items: center;
       background-color: var(--bg-surface);
       border: 1px solid var(--border-subtle);
-      border-radius: 999px;
+      border-radius: 8px;
       padding: 0.2rem;
     }
 
@@ -138,16 +171,17 @@
       color: var(--text-muted);
       font-family: var(--font-mono);
       font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      padding: 0.28rem 0.62rem;
-      border-radius: 999px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      padding: 0.32rem 0.65rem;
+      border-radius: 6px;
       cursor: pointer;
-      transition: all 0.25s ease;
+      transition: background-color 0.2s ease, color 0.2s ease;
     }
 
     .lang-btn.active {
-      background-color: var(--bg-elevated);
-      color: var(--text-primary);
+      background: linear-gradient(135deg, var(--burgundy), var(--violet));
+      color: #ffffff;
     }
 
     .hero {
@@ -155,56 +189,63 @@
       border-bottom: 1px solid var(--border-subtle);
     }
 
-    .hero-grid {
+    .hero-inner {
       display: grid;
-      grid-template-columns: 1.35fr 0.65fr;
-      align-items: center;
+      grid-template-columns: 1.25fr 0.75fr;
       gap: 3rem;
+      align-items: center;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.55rem;
       font-family: var(--font-mono);
       font-size: 0.75rem;
-      letter-spacing: 0.12em;
+      font-weight: 500;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--accent-brass);
-      margin-bottom: 1.4rem;
-    }
-
-    .eyebrow-dot {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background-color: var(--accent-brass);
-      opacity: 0.85;
-    }
-
-    .hero-title {
-      font-family: var(--font-serif);
-      font-size: clamp(2.2rem, 4.2vw, 3.35rem);
-      font-weight: 300;
-      line-height: 1.16;
-      letter-spacing: -0.01em;
-      color: var(--text-primary);
+      color: var(--violet-bright);
+      background-color: var(--violet-soft);
+      border: 1px solid rgba(164, 125, 255, 0.28);
+      padding: 0.38rem 0.85rem;
+      border-radius: 999px;
       margin-bottom: 1.5rem;
     }
 
-    .hero-title em {
-      font-style: italic;
-      color: var(--accent-frost);
+    .eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--burgundy-bright);
+      box-shadow: 0 0 8px var(--burgundy-bright);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.35rem, 4.6vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      color: var(--text-primary);
+      margin-bottom: 1.35rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(110deg, var(--burgundy-bright) 10%, var(--violet-bright) 90%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .hero-lead {
-      font-size: 1.05rem;
+      font-size: 1.08rem;
       color: var(--text-secondary);
-      max-width: 56ch;
-      margin-bottom: 2.25rem;
+      max-width: 54ch;
+      margin-bottom: 2.2rem;
     }
 
-    .hero-cta-group {
+    .hero-actions {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -216,219 +257,358 @@
       align-items: center;
       justify-content: center;
       gap: 0.55rem;
-      padding: 0.78rem 1.35rem;
-      border-radius: 6px;
-      font-size: 0.875rem;
-      font-weight: 500;
-      letter-spacing: 0.01em;
-      transition: all 0.28s ease;
+      padding: 0.82rem 1.45rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: transform 0.18s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
       cursor: pointer;
     }
 
+    .btn:active {
+      transform: translateY(1px);
+    }
+
     .btn-primary {
-      background-color: var(--text-primary);
-      color: var(--bg-base);
-      border: 1px solid var(--text-primary);
+      background: linear-gradient(135deg, var(--burgundy) 0%, #7a1c4c 55%, var(--violet) 100%);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 8px 24px rgba(143, 29, 61, 0.34);
     }
 
     .btn-primary:hover {
-      background-color: #d4d0c8;
-      border-color: #d4d0c8;
+      box-shadow: 0 10px 28px rgba(168, 35, 72, 0.48);
+      border-color: rgba(255, 255, 255, 0.26);
     }
 
     .btn-secondary {
       background-color: var(--bg-surface);
       color: var(--text-primary);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--border-strong);
     }
 
     .btn-secondary:hover {
-      border-color: var(--border-hover);
       background-color: var(--bg-elevated);
+      border-color: var(--violet-bright);
     }
 
-    .torus-emblem {
+    .studio-panel {
+      background: linear-gradient(160deg, var(--bg-elevated), var(--bg-surface));
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 1.75rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .studio-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--burgundy-bright), var(--violet-bright));
+    }
+
+    .panel-kicker {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.1rem;
+    }
+
+    .panel-list {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      opacity: 0.82;
+      flex-direction: column;
+      gap: 1rem;
     }
 
-    .torus-svg {
-      width: 100%;
-      max-width: 240px;
-      height: auto;
-      animation: slowDrift 75s linear infinite;
-    }
-
-    @keyframes slowDrift {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .torus-svg {
-        animation: none;
-      }
-      html {
-        scroll-behavior: auto;
-      }
-    }
-
-    section {
-      padding: 4.5rem 0;
+    .panel-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      padding-bottom: 0.85rem;
       border-bottom: 1px solid var(--border-subtle);
     }
 
-    .section-header {
+    .panel-item:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .panel-key {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .panel-val {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-align: right;
+    }
+
+    .panel-val.accent {
+      color: var(--burgundy-bright);
+    }
+
+    section {
+      padding: 5rem 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .section-head {
       display: flex;
       flex-wrap: wrap;
-      align-items: baseline;
+      align-items: flex-end;
       justify-content: space-between;
       gap: 1rem;
       margin-bottom: 2.5rem;
     }
 
-    .section-label {
+    .section-kicker {
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--burgundy-bright);
+      margin-bottom: 0.4rem;
     }
 
     .section-title {
-      font-family: var(--font-serif);
-      font-size: clamp(1.7rem, 3vw, 2.25rem);
-      font-weight: 300;
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
       color: var(--text-primary);
-      margin-top: 0.35rem;
     }
 
     .project-card {
       background-color: var(--bg-surface);
       border: 1px solid var(--border-subtle);
-      border-radius: 10px;
-      padding: 2.5rem;
-      transition: border-color 0.3s ease;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
     }
 
-    .project-card:hover {
-      border-color: var(--border-hover);
+    .project-banner {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      background:
+        radial-gradient(circle at 75% 50%, rgba(109, 60, 196, 0.22), transparent 58%),
+        radial-gradient(circle at 20% 25%, rgba(143, 29, 61, 0.25), transparent 55%),
+        var(--bg-card-top);
+      border-bottom: 1px solid var(--border-subtle);
     }
 
-    .project-meta-top {
+    .project-hero-copy {
+      padding: 2.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .badges-row {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
+      gap: 0.6rem;
+      margin-bottom: 1.25rem;
     }
 
-    .codename-tag {
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      padding: 0.34rem 0.75rem;
+      border-radius: 6px;
+    }
+
+    .badge-demo {
+      background-color: var(--burgundy-soft);
+      border: 1px solid var(--border-accent);
+      color: #ff9bb4;
+    }
+
+    .badge-platform {
+      background-color: var(--violet-soft);
+      border: 1px solid rgba(164, 125, 255, 0.3);
+      color: #cbb5ff;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--burgundy-bright);
+    }
+
+    .project-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.1rem, 3.8vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.05;
+      color: var(--text-primary);
+      margin-bottom: 0.45rem;
+    }
+
+    .project-subtitle {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--violet-bright);
+      letter-spacing: 0.04em;
+      margin-bottom: 1.35rem;
+    }
+
+    .project-pitch {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 56ch;
+    }
+
+    .project-pitch strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .project-visual {
+      position: relative;
+      min-height: 290px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      border-left: 1px solid var(--border-subtle);
+      background: radial-gradient(circle at center, rgba(143, 29, 61, 0.14), transparent 70%);
+    }
+
+    .project-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .torus-schematic {
+      width: 100%;
+      max-width: 260px;
+      height: auto;
+      filter: drop-shadow(0 0 28px rgba(143, 29, 61, 0.3));
+    }
+
+    .torus-ring-spin {
+      transform-origin: 150px 150px;
+      animation: orbitSpin 42s linear infinite;
+    }
+
+    .torus-ring-reverse {
+      transform-origin: 150px 150px;
+      animation: orbitSpinReverse 56s linear infinite;
+    }
+
+    @keyframes orbitSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes orbitSpinReverse {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+
+    .visual-caption {
+      position: absolute;
+      bottom: 1rem;
+      right: 1.25rem;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--text-muted);
     }
 
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
+    .project-body {
+      padding: 2.5rem 2.75rem 2.75rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 2.25rem;
+    }
+
+    .feature-box {
+      background-color: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 1.4rem;
+      transition: border-color 0.2s ease;
+    }
+
+    .feature-box:hover {
+      border-color: rgba(164, 125, 255, 0.35);
+    }
+
+    .feature-index {
       font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--accent-frost);
-      background-color: rgba(127, 161, 181, 0.08);
-      border: 1px solid rgba(127, 161, 181, 0.22);
-      padding: 0.35rem 0.8rem;
-      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--burgundy-bright);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.55rem;
     }
 
-    .status-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background-color: var(--accent-frost);
-    }
-
-    .project-title {
-      font-family: var(--font-serif);
-      font-size: clamp(1.95rem, 3.4vw, 2.65rem);
-      font-weight: 400;
-      letter-spacing: 0.02em;
+    .feature-title {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 600;
       color: var(--text-primary);
       margin-bottom: 0.45rem;
     }
 
-    .project-genre {
-      font-family: var(--font-mono);
-      font-size: 0.82rem;
-      color: var(--accent-brass);
-      margin-bottom: 1.65rem;
-    }
-
-    .project-pitch {
-      font-size: 1.02rem;
+    .feature-desc {
+      font-size: 0.89rem;
       color: var(--text-secondary);
-      max-width: 68ch;
-      margin-bottom: 2.25rem;
+      line-height: 1.6;
     }
 
-    .project-pitch strong {
-      color: var(--text-primary);
-      font-weight: 500;
-    }
-
-    .pillars-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      padding: 1.75rem 0;
-      border-top: 1px solid var(--border-subtle);
-      border-bottom: 1px solid var(--border-subtle);
-      margin-bottom: 2rem;
-    }
-
-    .pillar-code {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      margin-bottom: 0.4rem;
-    }
-
-    .pillar-title {
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: var(--text-primary);
-      margin-bottom: 0.35rem;
-    }
-
-    .pillar-desc {
-      font-size: 0.875rem;
-      color: var(--text-secondary);
-      line-height: 1.55;
-    }
-
-    .project-actions {
+    .project-footer {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
+      gap: 1.25rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-subtle);
     }
 
-    .project-buttons {
+    .project-cta-group {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       gap: 0.85rem;
+    }
+
+    .btn-upcoming {
+      background-color: rgba(143, 29, 61, 0.16);
+      color: #ffc2d2;
+      border: 1px solid var(--border-accent);
+      cursor: default;
+    }
+
+    .btn-upcoming:active {
+      transform: none;
     }
 
     .steam-note {
@@ -437,70 +617,64 @@
       color: var(--text-muted);
     }
 
-    .future-slot {
-      margin-top: 1.25rem;
-      padding: 1.35rem 1.75rem;
-      border: 1px dashed var(--border-subtle);
-      border-radius: 8px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.75rem;
-      color: var(--text-muted);
-      font-size: 0.875rem;
-    }
-
-    .future-slot-code {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .studio-grid {
+    .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.2fr 0.8fr;
       gap: 3rem;
       align-items: start;
     }
 
-    .studio-text {
+    .about-copy {
       color: var(--text-secondary);
-      font-size: 0.98rem;
+      font-size: 1rem;
     }
 
-    .studio-text p + p {
+    .about-copy p + p {
       margin-top: 1.1rem;
     }
 
-    .studio-facts {
-      border-left: 1px solid var(--border-subtle);
-      padding-left: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.35rem;
-    }
-
-    .fact-label {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 0.25rem;
-    }
-
-    .fact-value {
-      font-size: 0.95rem;
+    .about-copy strong {
       color: var(--text-primary);
+      font-weight: 600;
     }
 
-    .contact-box {
+    .about-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem;
+    }
+
+    .stat-card {
       background-color: var(--bg-surface);
       border: 1px solid var(--border-subtle);
       border-radius: 10px;
-      padding: 2.5rem;
+      padding: 1.2rem;
+    }
+
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .stat-value {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .contact-card {
+      background:
+        radial-gradient(circle at 90% 20%, rgba(109, 60, 196, 0.2), transparent 55%),
+        radial-gradient(circle at 10% 90%, rgba(143, 29, 61, 0.22), transparent 55%),
+        var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 2.75rem;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -509,26 +683,32 @@
     }
 
     .contact-info {
-      max-width: 50ch;
+      max-width: 52ch;
     }
 
     .contact-title {
-      font-family: var(--font-serif);
-      font-size: 1.75rem;
-      font-weight: 300;
-      margin-bottom: 0.6rem;
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 2.8vw, 2.1rem);
+      font-weight: 700;
+      margin-bottom: 0.65rem;
     }
 
     .contact-desc {
-      font-size: 0.95rem;
       color: var(--text-secondary);
-      margin-bottom: 1.1rem;
+      font-size: 0.96rem;
+      margin-bottom: 1.2rem;
     }
 
-    .contact-email-display {
+    .contact-email {
+      display: inline-block;
       font-family: var(--font-mono);
-      font-size: 1rem;
-      color: var(--accent-brass);
+      font-size: 1.02rem;
+      font-weight: 500;
+      color: var(--burgundy-bright);
+      background-color: var(--burgundy-soft);
+      border: 1px solid var(--border-accent);
+      padding: 0.42rem 0.85rem;
+      border-radius: 6px;
     }
 
     .contact-actions {
@@ -539,9 +719,9 @@
     }
 
     footer {
-      padding: 2.5rem 0 3.25rem;
+      padding: 2.5rem 0 3rem;
       color: var(--text-muted);
-      font-size: 0.82rem;
+      font-size: 0.84rem;
     }
 
     .footer-inner {
@@ -554,41 +734,59 @@
 
     .footer-mono {
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.76rem;
+      color: var(--text-secondary);
     }
 
-    @media (max-width: 820px) {
-      .hero-grid {
+    @media (prefers-reduced-motion: reduce) {
+      .torus-ring-spin,
+      .torus-ring-reverse {
+        animation: none;
+      }
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner,
+      .project-banner,
+      .about-grid {
         grid-template-columns: 1fr;
       }
 
-      .torus-emblem {
+      .project-visual {
+        border-left: none;
+        border-top: 1px solid var(--border-subtle);
+        min-height: 230px;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
         display: none;
       }
 
-      .pillars-grid {
-        grid-template-columns: 1fr;
+      .hero {
+        padding: 4rem 0 3.5rem;
       }
 
-      .studio-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+      section {
+        padding: 3.75rem 0;
       }
 
-      .studio-facts {
-        border-left: none;
-        border-top: 1px solid var(--border-subtle);
-        padding-left: 0;
-        padding-top: 1.5rem;
-      }
-
-      .project-card,
-      .contact-box {
+      .project-hero-copy,
+      .project-body,
+      .contact-card {
         padding: 1.75rem;
       }
 
-      .nav-links {
-        display: none;
+      .about-cards {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -597,13 +795,21 @@
   <header>
     <div class="container nav-inner">
       <a href="#" class="brand">
-        <span class="brand-name">Hrim Games</span>
-        <span class="brand-origin">France</span>
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M5 4V20M19 4V20M5 12H19" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="square"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">Hrim Games</span>
+          <span class="brand-sub" data-i18n="brand_sub">Indie Dev · Steam</span>
+        </span>
       </a>
-      <div class="nav-actions">
+
+      <div class="nav-right">
         <nav class="nav-links">
-          <a href="#creations" data-i18n="nav_creations">Créations</a>
-          <a href="#studio" data-i18n="nav_studio">Le studio</a>
+          <a href="#jeux" data-i18n="nav_games">Jeux</a>
+          <a href="#apropos" data-i18n="nav_about">À propos</a>
           <a href="#contact" data-i18n="nav_contact">Contact</a>
         </nav>
         <div class="lang-switch" role="group" aria-label="Language selector">
@@ -616,127 +822,180 @@
 
   <main>
     <section class="hero">
-      <div class="container hero-grid">
+      <div class="container hero-inner">
         <div>
           <div class="eyebrow">
             <span class="eyebrow-dot"></span>
-            <span data-i18n="hero_eyebrow">Développeur de jeux vidéo indépendant · France</span>
+            <span data-i18n="hero_eyebrow">Développeur indépendant · France</span>
           </div>
           <h1 class="hero-title" data-i18n="hero_title">
-            Des univers systémiques façonnés avec <em>retenue</em> et précision.
+            Jeux vidéo indépendants conçus pour <span>PC &amp; Steam</span>.
           </h1>
           <p class="hero-lead" data-i18n="hero_lead">
-            Hrim Games est un studio indépendant français dédié à la création d’œuvres singulières, à la croisée de la science-fiction et de la dark fantasy.
+            Hrim Games est le studio d’un développeur indépendant français. Chaque projet est développé avec une exigence technique et une attention particulière portée au gameplay, au ressenti et à la finition.
           </p>
-          <div class="hero-cta-group">
-            <a href="#creations" class="btn btn-primary" data-i18n="hero_cta_creations">Accéder aux créations &amp; démos</a>
-            <a href="#contact" class="btn btn-secondary" data-i18n="hero_cta_contact">Contact professionnel</a>
+          <div class="hero-actions">
+            <a href="#jeux" class="btn btn-primary" data-i18n="hero_cta_game">Découvrir Critical Torus</a>
+            <a href="#contact" class="btn btn-secondary" data-i18n="hero_cta_contact">Prendre contact</a>
           </div>
         </div>
-        <div class="torus-emblem" aria-hidden="true">
-          <svg class="torus-svg" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="120" cy="120" r="102" stroke="#E5E2DC" stroke-opacity="0.14" stroke-width="1"/>
-            <circle cx="120" cy="120" r="76" stroke="#7FA1B5" stroke-opacity="0.32" stroke-width="1" stroke-dasharray="3 5"/>
-            <circle cx="120" cy="120" r="46" stroke="#C4A46C" stroke-opacity="0.35" stroke-width="1"/>
-            <ellipse cx="120" cy="120" rx="102" ry="38" stroke="#E5E2DC" stroke-opacity="0.16" stroke-width="1"/>
-            <ellipse cx="120" cy="120" rx="38" ry="102" stroke="#E5E2DC" stroke-opacity="0.16" stroke-width="1"/>
-            <circle cx="120" cy="18" r="2.5" fill="#C4A46C" fill-opacity="0.8"/>
-            <circle cx="196" cy="120" r="2.5" fill="#7FA1B5" fill-opacity="0.8"/>
-          </svg>
-        </div>
+
+        <aside class="studio-panel">
+          <div class="panel-kicker" data-i18n="panel_kicker">Fiche studio</div>
+          <div class="panel-list">
+            <div class="panel-item">
+              <span class="panel-key" data-i18n="panel_role_k">Statut</span>
+              <span class="panel-val" data-i18n="panel_role_v">Développeur solo indépendant</span>
+            </div>
+            <div class="panel-item">
+              <span class="panel-key" data-i18n="panel_loc_k">Origine</span>
+              <span class="panel-val">France</span>
+            </div>
+            <div class="panel-item">
+              <span class="panel-key" data-i18n="panel_plat_k">Plateforme</span>
+              <span class="panel-val">PC (Steam)</span>
+            </div>
+            <div class="panel-item">
+              <span class="panel-key" data-i18n="panel_proj_k">Projet actif</span>
+              <span class="panel-val accent">Critical Torus</span>
+            </div>
+            <div class="panel-item">
+              <span class="panel-key" data-i18n="panel_next_k">Prochaine étape</span>
+              <span class="panel-val" data-i18n="panel_next_v">Démo Steam bientôt</span>
+            </div>
+          </div>
+        </aside>
       </div>
     </section>
 
-    <section id="creations">
+    <section id="jeux">
       <div class="container">
-        <div class="section-header">
+        <div class="section-head">
           <div>
-            <div class="section-label" data-i18n="creations_label">Catalogue des œuvres</div>
-            <h2 class="section-title" data-i18n="creations_title">Créations &amp; Démos</h2>
+            <div class="section-kicker" data-i18n="games_kicker">Production en cours</div>
+            <h2 class="section-title" data-i18n="games_title">Projet actuel</h2>
           </div>
-          <span class="section-label" data-i18n="creations_count">01 projet actif</span>
         </div>
 
         <article class="project-card">
-          <div class="project-meta-top">
-            <span class="codename-tag" data-i18n="ct_codename">Projet 01 · Nom de code</span>
-            <span class="status-badge">
-              <span class="status-dot"></span>
-              <span data-i18n="ct_status">Démo Steam prévue d’ici 1 mois</span>
-            </span>
+          <div class="project-banner">
+            <div class="project-hero-copy">
+              <div class="badges-row">
+                <span class="badge badge-demo">
+                  <span class="badge-dot"></span>
+                  <span data-i18n="ct_status">Démo Steam bientôt disponible</span>
+                </span>
+                <span class="badge badge-platform">PC · Steam</span>
+              </div>
+
+              <h3 class="project-title">Critical Torus</h3>
+              <p class="project-subtitle" data-i18n="ct_subtitle">Harmonic Reactor Survival · Roguelike Deckbuilder</p>
+
+              <p class="project-pitch" data-i18n="ct_pitch">
+                Incarnez l’<strong>Ingénieur en Chef du Réacteur Harmonique</strong> et alimentez le dôme bouclier de la dernière cité industrielle assiégée. Placez vos cartes sur un pupitre à 4 slots pour injecter de la matière polarisée dans le tore : chaque carte joue en rythme, façonne la musique en temps réel et déclenche des réactions décisives pour survivre au siège.
+              </p>
+            </div>
+
+            <div class="project-visual">
+              <svg class="torus-schematic" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="150" cy="150" r="126" stroke="rgba(244,240,247,0.1)" stroke-width="1"/>
+                <circle cx="150" cy="150" r="102" stroke="#8f1d3d" stroke-opacity="0.7" stroke-width="2"/>
+                <circle cx="150" cy="150" r="76" stroke="#a47dff" stroke-opacity="0.45" stroke-width="1.5" stroke-dasharray="6 6" class="torus-ring-spin"/>
+                <circle cx="150" cy="150" r="44" stroke="#e05278" stroke-opacity="0.65" stroke-width="1.5"/>
+                <circle cx="150" cy="150" r="18" fill="rgba(143,29,61,0.35)" stroke="#a47dff" stroke-width="1.5"/>
+                <g class="torus-ring-reverse" opacity="0.75">
+                  <line x1="150" y1="24" x2="150" y2="52" stroke="#e05278" stroke-width="2"/>
+                  <line x1="150" y1="248" x2="150" y2="276" stroke="#e05278" stroke-width="2"/>
+                  <line x1="24" y1="150" x2="52" y2="150" stroke="#a47dff" stroke-width="2"/>
+                  <line x1="248" y1="150" x2="276" y2="150" stroke="#a47dff" stroke-width="2"/>
+                  <line x1="61" y1="61" x2="80" y2="80" stroke="#f4f0f7" stroke-opacity="0.4" stroke-width="1.5"/>
+                  <line x1="220" y1="220" x2="239" y2="239" stroke="#f4f0f7" stroke-opacity="0.4" stroke-width="1.5"/>
+                  <line x1="239" y1="61" x2="220" y2="80" stroke="#f4f0f7" stroke-opacity="0.4" stroke-width="1.5"/>
+                  <line x1="80" y1="220" x2="61" y2="239" stroke="#f4f0f7" stroke-opacity="0.4" stroke-width="1.5"/>
+                </g>
+                <circle cx="150" cy="48" r="4.5" fill="#e05278"/>
+                <circle cx="252" cy="150" r="4.5" fill="#a47dff"/>
+                <circle cx="150" cy="252" r="4.5" fill="#e05278"/>
+                <circle cx="48" cy="150" r="4.5" fill="#a47dff"/>
+              </svg>
+              <span class="visual-caption" data-i18n="ct_visual_caption">Visuels Steam en préparation</span>
+            </div>
           </div>
 
-          <h3 class="project-title">Critical Torus</h3>
-          <p class="project-genre" data-i18n="ct_genre">Roguelike de gestion et survie systémique cadencé</p>
+          <div class="project-body">
+            <div class="features-grid">
+              <div class="feature-box">
+                <div class="feature-index">01</div>
+                <h4 class="feature-title" data-i18n="ct_f1_title">Pupitre 4 Slots &amp; Musique Live</h4>
+                <p class="feature-desc" data-i18n="ct_f1_desc">
+                  Chaque carte insérée se verrouille automatiquement sur le temps fort, pilote une paire de buses du tore et compose la bande-son en temps réel, sans test de réflexe punitif.
+                </p>
+              </div>
 
-          <p class="project-pitch" data-i18n="ct_pitch">
-            Incarnez l’<strong>Ingénieur en Chef du Réacteur Harmonique</strong> chargé d’alimenter et de protéger la dernière cité industrielle sous siège. Loin d’un jeu de rythme réflexe passif, <strong>Critical Torus</strong> est un roguelike de gestion et survie systémique cadencé où chaque carte posée sur le pupitre modifie simultanément la musique générée en temps réel et les collisions balistiques dans le tore.
-          </p>
+              <div class="feature-box">
+                <div class="feature-index">02</div>
+                <h4 class="feature-title" data-i18n="ct_f2_title">Polarités (+, -, Ω) &amp; SCRAM</h4>
+                <p class="feature-desc" data-i18n="ct_f2_desc">
+                  Faites entrer en collision matière positive, négative et instable pour générer des pics d’énergie, refroidir le cœur et déclencher une décharge SCRAM défensive en cas de surchauffe.
+                </p>
+              </div>
 
-          <div class="pillars-grid">
-            <div>
-              <div class="pillar-code">01</div>
-              <div class="pillar-title" data-i18n="ct_p1_title">Pupitre Harmonique</div>
-              <p class="pillar-desc" data-i18n="ct_p1_desc">Orchestrez la distribution énergétique de la cité en agençant vos modules sur un pupitre tactique.</p>
+              <div class="feature-box">
+                <div class="feature-index">03</div>
+                <h4 class="feature-title" data-i18n="ct_f3_title">Cycles de Siège &amp; Deckbuilding</h4>
+                <p class="feature-desc" data-i18n="ct_f3_desc">
+                  Alternez entre choix critiques à l’Intercom en temps suspendu et séquences d’allumage rythmées. Affinez votre deck et équipez des cartouches passives au fil des cycles.
+                </p>
+              </div>
             </div>
-            <div>
-              <div class="pillar-code">02</div>
-              <div class="pillar-title" data-i18n="ct_p2_title">Musique Générative</div>
-              <p class="pillar-desc" data-i18n="ct_p2_desc">Chaque carte posée altère directement la partition composée en temps réel par le réacteur.</p>
-            </div>
-            <div>
-              <div class="pillar-code">03</div>
-              <div class="pillar-title" data-i18n="ct_p3_title">Balistique Torique</div>
-              <p class="pillar-desc" data-i18n="ct_p3_desc">La cadence et la résonance des systèmes gouvernent les trajectoires et impacts au cœur du tore.</p>
-            </div>
-          </div>
 
-          <div class="project-actions">
-            <div class="project-buttons">
-              <a href="#contact" id="steam-demo-link" class="btn btn-primary" data-i18n="ct_btn_steam">Page Steam &amp; Démo — Ouverture prochaine</a>
-              <a href="mailto:contact@hrimgames.com?subject=Critical%20Torus%20-%20Demo%20%2F%20Press" class="btn btn-secondary" data-i18n="ct_btn_press">Demander un accès presse / test</a>
+            <div class="project-footer">
+              <div class="project-cta-group">
+                <span class="btn btn-upcoming" data-i18n="ct_btn_steam">Page Steam &amp; Démo — Ouverture prochaine</span>
+                <a href="mailto:contact@hrimgames.com?subject=Critical%20Torus%20-%20Demo%20%2F%20Contact" class="btn btn-secondary" data-i18n="ct_btn_press">Contact presse / playtest</a>
+              </div>
+              <span class="steam-note" data-i18n="ct_note">Développé en indépendant pour PC (Steam)</span>
             </div>
-            <span class="steam-note" data-i18n="ct_note">Visuels et bande-annonce en cours de préparation</span>
           </div>
         </article>
-
-        <div class="future-slot">
-          <span class="future-slot-code" data-i18n="future_code">Projet 02 · Archive future</span>
-          <span data-i18n="future_desc">D’autres créations rejoindront ce catalogue au fil du développement du studio.</span>
-        </div>
       </div>
     </section>
 
-    <section id="studio">
+    <section id="apropos">
       <div class="container">
-        <div class="section-header">
+        <div class="section-head">
           <div>
-            <div class="section-label" data-i18n="studio_label">Identité</div>
-            <h2 class="section-title" data-i18n="studio_title">À propos de Hrim Games</h2>
+            <div class="section-kicker" data-i18n="about_kicker">Le développeur</div>
+            <h2 class="section-title" data-i18n="about_title">À propos de Hrim Games</h2>
           </div>
         </div>
 
-        <div class="studio-grid">
-          <div class="studio-text">
-            <p data-i18n="studio_p1">
-              Fondé et porté par un développeur indépendant français, Hrim Games conçoit des expériences de jeu exigeantes où la mécanique, le son et l’atmosphère répondent à une même logique interne.
+        <div class="about-grid">
+          <div class="about-copy">
+            <p data-i18n="about_p1">
+              <strong>Hrim Games</strong> est la vitrine d’un développeur indépendant français dédié à la création de jeux vidéo sur PC, distribués sur Steam.
             </p>
-            <p data-i18n="studio_p2">
-              Le studio privilégie une approche artisanale, calme et lisible, loin du bruit promotionnel, afin de laisser toute sa place à la profondeur des systèmes et à l’imaginaire de la science-fiction et de la dark fantasy.
+            <p data-i18n="about_p2">
+              Le travail est centré sur des mécaniques lisibles, une réalisation technique propre et des jeux à forte identité. L’objectif est simple : concevoir, polir et sortir des jeux solides, en commençant par la démo prochaine de <strong>Critical Torus</strong>.
             </p>
           </div>
-          <div class="studio-facts">
-            <div>
-              <div class="fact-label" data-i18n="fact_origin_label">Origine</div>
-              <div class="fact-value" data-i18n="fact_origin_val">Développeur indépendant · France</div>
+
+          <div class="about-cards">
+            <div class="stat-card">
+              <div class="stat-label" data-i18n="stat_1_k">Structure</div>
+              <div class="stat-value" data-i18n="stat_1_v">Studio solo</div>
             </div>
-            <div>
-              <div class="fact-label" data-i18n="fact_focus_label">Territoires créatifs</div>
-              <div class="fact-value" data-i18n="fact_focus_val">Design systémique, Science-Fiction, Dark Fantasy</div>
+            <div class="stat-card">
+              <div class="stat-label" data-i18n="stat_2_k">Localisation</div>
+              <div class="stat-value">France</div>
             </div>
-            <div>
-              <div class="fact-label" data-i18n="fact_platform_label">Distribution</div>
-              <div class="fact-value">PC (Steam)</div>
+            <div class="stat-card">
+              <div class="stat-label" data-i18n="stat_3_k">Distribution</div>
+              <div class="stat-value">PC · Steam</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label" data-i18n="stat_4_k">Focus actuel</div>
+              <div class="stat-value" data-i18n="stat_4_v">Démo Critical Torus</div>
             </div>
           </div>
         </div>
@@ -745,15 +1004,16 @@
 
     <section id="contact">
       <div class="container">
-        <div class="contact-box">
+        <div class="contact-card">
           <div class="contact-info">
-            <div class="section-label" data-i18n="contact_label">Ligne directe</div>
-            <h2 class="contact-title" data-i18n="contact_title">Contact professionnel</h2>
+            <div class="section-kicker" data-i18n="contact_kicker">Contact direct</div>
+            <h2 class="contact-title" data-i18n="contact_title">Échanger avec le studio</h2>
             <p class="contact-desc" data-i18n="contact_desc">
-              Pour toute demande concernant la démo de Critical Torus, la presse, l’édition ou une collaboration, écrivez directement au studio.
+              Une question sur la démo de Critical Torus, une demande presse, d’édition ou un échange professionnel ? Écrivez directement par e-mail.
             </p>
-            <div class="contact-email-display">contact@hrimgames.com</div>
+            <span class="contact-email">contact@hrimgames.com</span>
           </div>
+
           <div class="contact-actions">
             <a href="mailto:contact@hrimgames.com" class="btn btn-primary" data-i18n="contact_btn_mail">Envoyer un e-mail</a>
             <button type="button" id="copy-email-btn" class="btn btn-secondary" data-i18n="contact_btn_copy">Copier l’adresse</button>
@@ -765,7 +1025,7 @@
 
   <footer>
     <div class="container footer-inner">
-      <span data-i18n="footer_copy">© 2026 Hrim Games — Studio de jeu vidéo indépendant français</span>
+      <span data-i18n="footer_copy">© 2026 Hrim Games — Développeur de jeux vidéo indépendant français</span>
       <span class="footer-mono">hrimgames.com</span>
     </div>
   </footer>
@@ -773,92 +1033,108 @@
   <script>
     const translations = {
       fr: {
-        nav_creations: "Créations",
-        nav_studio: "Le studio",
+        page_title: "Hrim Games — Développeur de jeux vidéo indépendant (PC / Steam)",
+        brand_sub: "Indie Dev · Steam",
+        nav_games: "Jeux",
+        nav_about: "À propos",
         nav_contact: "Contact",
-        hero_eyebrow: "Développeur de jeux vidéo indépendant · France",
-        hero_title: "Des univers systémiques façonnés avec <em>retenue</em> et précision.",
-        hero_lead: "Hrim Games est un studio indépendant français dédié à la création d’œuvres singulières, à la croisée de la science-fiction et de la dark fantasy.",
-        hero_cta_creations: "Accéder aux créations & démos",
-        hero_cta_contact: "Contact professionnel",
-        creations_label: "Catalogue des œuvres",
-        creations_title: "Créations & Démos",
-        creations_count: "01 projet actif",
-        ct_codename: "Projet 01 · Nom de code",
-        ct_status: "Démo Steam prévue d’ici 1 mois",
-        ct_genre: "Roguelike de gestion et survie systémique cadencé",
-        ct_pitch: "Incarnez l’<strong>Ingénieur en Chef du Réacteur Harmonique</strong> chargé d’alimenter et de protéger la dernière cité industrielle sous siège. Loin d’un jeu de rythme réflexe passif, <strong>Critical Torus</strong> est un roguelike de gestion et survie systémique cadencé où chaque carte posée sur le pupitre modifie simultanément la musique générée en temps réel et les collisions balistiques dans le tore.",
-        ct_p1_title: "Pupitre Harmonique",
-        ct_p1_desc: "Orchestrez la distribution énergétique de la cité en agençant vos modules sur un pupitre tactique.",
-        ct_p2_title: "Musique Générative",
-        ct_p2_desc: "Chaque carte posée altère directement la partition composée en temps réel par le réacteur.",
-        ct_p3_title: "Balistique Torique",
-        ct_p3_desc: "La cadence et la résonance des systèmes gouvernent les trajectoires et impacts au cœur du tore.",
+        hero_eyebrow: "Développeur indépendant · France",
+        hero_title: "Jeux vidéo indépendants conçus pour <span>PC &amp; Steam</span>.",
+        hero_lead: "Hrim Games est le studio d’un développeur indépendant français. Chaque projet est développé avec une exigence technique et une attention particulière portée au gameplay, au ressenti et à la finition.",
+        hero_cta_game: "Découvrir Critical Torus",
+        hero_cta_contact: "Prendre contact",
+        panel_kicker: "Fiche studio",
+        panel_role_k: "Statut",
+        panel_role_v: "Développeur solo indépendant",
+        panel_loc_k: "Origine",
+        panel_plat_k: "Plateforme",
+        panel_proj_k: "Projet actif",
+        panel_next_k: "Prochaine étape",
+        panel_next_v: "Démo Steam bientôt",
+        games_kicker: "Production en cours",
+        games_title: "Projet actuel",
+        ct_status: "Démo Steam bientôt disponible",
+        ct_subtitle: "Harmonic Reactor Survival · Roguelike Deckbuilder",
+        ct_pitch: "Incarnez l’<strong>Ingénieur en Chef du Réacteur Harmonique</strong> et alimentez le dôme bouclier de la dernière cité industrielle assiégée. Placez vos cartes sur un pupitre à 4 slots pour injecter de la matière polarisée dans le tore : chaque carte joue en rythme, façonne la musique en temps réel et déclenche des réactions décisives pour survivre au siège.",
+        ct_visual_caption: "Visuels Steam en préparation",
+        ct_f1_title: "Pupitre 4 Slots & Musique Live",
+        ct_f1_desc: "Chaque carte insérée se verrouille automatiquement sur le temps fort, pilote une paire de buses du tore et compose la bande-son en temps réel, sans test de réflexe punitif.",
+        ct_f2_title: "Polarités (+, -, Ω) & SCRAM",
+        ct_f2_desc: "Faites entrer en collision matière positive, négative et instable pour générer des pics d’énergie, refroidir le cœur et déclencher une décharge SCRAM défensive en cas de surchauffe.",
+        ct_f3_title: "Cycles de Siège & Deckbuilding",
+        ct_f3_desc: "Alternez entre choix critiques à l’Intercom en temps suspendu et séquences d’allumage rythmées. Affinez votre deck et équipez des cartouches passives au fil des cycles.",
         ct_btn_steam: "Page Steam & Démo — Ouverture prochaine",
-        ct_btn_press: "Demander un accès presse / test",
-        ct_note: "Visuels et bande-annonce en cours de préparation",
-        future_code: "Projet 02 · Archive future",
-        future_desc: "D’autres créations rejoindront ce catalogue au fil du développement du studio.",
-        studio_label: "Identité",
-        studio_title: "À propos de Hrim Games",
-        studio_p1: "Fondé et porté par un développeur indépendant français, Hrim Games conçoit des expériences de jeu exigeantes où la mécanique, le son et l’atmosphère répondent à une même logique interne.",
-        studio_p2: "Le studio privilégie une approche artisanale, calme et lisible, loin du bruit promotionnel, afin de laisser toute sa place à la profondeur des systèmes et à l’imaginaire de la science-fiction et de la dark fantasy.",
-        fact_origin_label: "Origine",
-        fact_origin_val: "Développeur indépendant · France",
-        fact_focus_label: "Territoires créatifs",
-        fact_focus_val: "Design systémique, Science-Fiction, Dark Fantasy",
-        fact_platform_label: "Distribution",
-        contact_label: "Ligne directe",
-        contact_title: "Contact professionnel",
-        contact_desc: "Pour toute demande concernant la démo de Critical Torus, la presse, l’édition ou une collaboration, écrivez directement au studio.",
+        ct_btn_press: "Contact presse / playtest",
+        ct_note: "Développé en indépendant pour PC (Steam)",
+        about_kicker: "Le développeur",
+        about_title: "À propos de Hrim Games",
+        about_p1: "<strong>Hrim Games</strong> est la vitrine d’un développeur indépendant français dédié à la création de jeux vidéo sur PC, distribués sur Steam.",
+        about_p2: "Le travail est centré sur des mécaniques lisibles, une réalisation technique propre et des jeux à forte identité. L’objectif est simple : concevoir, polir et sortir des jeux solides, en commençant par la démo prochaine de <strong>Critical Torus</strong>.",
+        stat_1_k: "Structure",
+        stat_1_v: "Studio solo",
+        stat_2_k: "Localisation",
+        stat_3_k: "Distribution",
+        stat_4_k: "Focus actuel",
+        stat_4_v: "Démo Critical Torus",
+        contact_kicker: "Contact direct",
+        contact_title: "Échanger avec le studio",
+        contact_desc: "Une question sur la démo de Critical Torus, une demande presse, d’édition ou un échange professionnel ? Écrivez directement par e-mail.",
         contact_btn_mail: "Envoyer un e-mail",
         contact_btn_copy: "Copier l’adresse",
-        contact_copied: "Adresse copiée",
-        footer_copy: "© 2026 Hrim Games — Studio de jeu vidéo indépendant français"
+        contact_copied: "Adresse copiée !",
+        footer_copy: "© 2026 Hrim Games — Développeur de jeux vidéo indépendant français"
       },
       en: {
-        nav_creations: "Creations",
-        nav_studio: "Studio",
+        page_title: "Hrim Games — Independent Video Game Developer (PC / Steam)",
+        brand_sub: "Indie Dev · Steam",
+        nav_games: "Games",
+        nav_about: "About",
         nav_contact: "Contact",
         hero_eyebrow: "Independent Game Developer · France",
-        hero_title: "Systemic worlds crafted with <em>restraint</em> and precision.",
-        hero_lead: "Hrim Games is an independent French studio dedicated to crafting singular video games at the crossroads of science fiction and dark fantasy.",
-        hero_cta_creations: "Explore creations & demos",
-        hero_cta_contact: "Professional contact",
-        creations_label: "Catalog of Works",
-        creations_title: "Creations & Demos",
-        creations_count: "01 active project",
-        ct_codename: "Project 01 · Codename",
-        ct_status: "Steam Demo arriving within 1 month",
-        ct_genre: "Cadenced Systemic Management & Survival Roguelike",
-        ct_pitch: "Step into the role of <strong>Chief Engineer of the Harmonic Reactor</strong>, tasked with powering and defending the last industrial city under siege. Far from a passive reflex rhythm game, <strong>Critical Torus</strong> is a cadenced systemic management and survival roguelike where every card placed on the console simultaneously alters the real-time generated music and ballistic collisions inside the torus.",
-        ct_p1_title: "Harmonic Console",
-        ct_p1_desc: "Orchestrate the city’s power grid by arranging modules across a tactical control console.",
-        ct_p2_title: "Generative Score",
-        ct_p2_desc: "Every card played directly reshapes the musical score synthesized in real time by the reactor.",
-        ct_p3_title: "Toroidal Ballistics",
-        ct_p3_desc: "System cadence and resonance govern trajectories and impacts within the torus.",
+        hero_title: "Independent video games built for <span>PC &amp; Steam</span>.",
+        hero_lead: "Hrim Games is the studio of a French independent developer. Every project is built with strong technical standards and a focus on gameplay, feel, and polish.",
+        hero_cta_game: "Explore Critical Torus",
+        hero_cta_contact: "Get in touch",
+        panel_kicker: "Studio overview",
+        panel_role_k: "Status",
+        panel_role_v: "Solo indie developer",
+        panel_loc_k: "Location",
+        panel_plat_k: "Platform",
+        panel_proj_k: "Active project",
+        panel_next_k: "Next milestone",
+        panel_next_v: "Steam demo soon",
+        games_kicker: "In development",
+        games_title: "Current Project",
+        ct_status: "Steam Demo Coming Soon",
+        ct_subtitle: "Harmonic Reactor Survival · Roguelike Deckbuilder",
+        ct_pitch: "Play as the <strong>Chief Engineer of the Harmonic Reactor</strong> and power the shield dome of the last besieged industrial city. Slot your cards into a 4-slot console to fire polarized matter into the torus: every card locks to the beat, shapes the real-time music, and triggers vital reactions to survive the siege.",
+        ct_visual_caption: "Steam key art in progress",
+        ct_f1_title: "4-Slot Console & Live Music",
+        ct_f1_desc: "Each slotted card automatically locks to the next downbeat, fires through a paired set of torus nozzles, and builds the soundtrack in real time without punishing reflex checks.",
+        ct_f2_title: "Polarities (+, -, Ω) & SCRAM",
+        ct_f2_desc: "Collide positive, negative, and unstable matter to generate power surges, cool down the core, and trigger a defensive SCRAM discharge whenever heat spikes.",
+        ct_f3_title: "Siege Cycles & Deckbuilding",
+        ct_f3_desc: "Alternate between paused Intercom dilemmas and rhythmic ignition sequences. Refine your deck and install passive reactor cartridges across siege cycles.",
         ct_btn_steam: "Steam Page & Demo — Opening Soon",
-        ct_btn_press: "Request press / playtest access",
-        ct_note: "Key art and trailer currently in production",
-        future_code: "Project 02 · Future Archive",
-        future_desc: "Additional creations will join this catalog as the studio grows.",
-        studio_label: "Identity",
-        studio_title: "About Hrim Games",
-        studio_p1: "Founded and led by a French independent developer, Hrim Games builds focused experiences where mechanics, sound, and atmosphere follow a unified internal logic.",
-        studio_p2: "The studio favors a calm, readable, craft-driven approach free from promotional noise, giving full room to systemic depth and the worlds of science fiction and dark fantasy.",
-        fact_origin_label: "Origin",
-        fact_origin_val: "Independent Developer · France",
-        fact_focus_label: "Creative Focus",
-        fact_focus_val: "Systemic Design, Science Fiction, Dark Fantasy",
-        fact_platform_label: "Distribution",
-        contact_label: "Direct Line",
-        contact_title: "Professional Contact",
-        contact_desc: "For inquiries regarding the Critical Torus demo, press, publishing, or collaborations, reach out directly to the studio.",
+        ct_btn_press: "Press / playtest inquiries",
+        ct_note: "Independently developed for PC (Steam)",
+        about_kicker: "The developer",
+        about_title: "About Hrim Games",
+        about_p1: "<strong>Hrim Games</strong> is the home of a French independent developer dedicated to creating PC video games for Steam.",
+        about_p2: "The focus is on readable mechanics, solid engineering, and games with a distinct identity. The goal is straightforward: build, polish, and ship great games, starting with the upcoming demo for <strong>Critical Torus</strong>.",
+        stat_1_k: "Team",
+        stat_1_v: "Solo studio",
+        stat_2_k: "Location",
+        stat_3_k: "Platform",
+        stat_4_k: "Current focus",
+        stat_4_v: "Critical Torus Demo",
+        contact_kicker: "Direct contact",
+        contact_title: "Get in touch with the studio",
+        contact_desc: "Questions about the Critical Torus demo, press requests, publishing, or professional inquiries? Send an email directly.",
         contact_btn_mail: "Send an email",
         contact_btn_copy: "Copy address",
-        contact_copied: "Address copied",
-        footer_copy: "© 2026 Hrim Games — Independent French Game Studio"
+        contact_copied: "Address copied!",
+        footer_copy: "© 2026 Hrim Games — Independent French Video Game Developer"
       }
     };
 
@@ -868,6 +1144,7 @@
       currentLang = lang;
       document.documentElement.lang = lang;
       const dict = translations[lang];
+      document.title = dict.page_title;
 
       document.querySelectorAll("[data-i18n]").forEach((el) => {
         const key = el.getAttribute("data-i18n");
